@@ -1,69 +1,69 @@
-# UE5 MCP Server
+# Servidor MCP para UE5
 
-[![Tests](https://img.shields.io/badge/tests-87%20passed-brightgreen)](tests/) [![Coverage](https://img.shields.io/badge/coverage-97%25-brightgreen)](vitest.config.js) [![Node](https://img.shields.io/badge/node-%3E%3D18-blue)](package.json) [![License: MIT](https://img.shields.io/badge/license-MIT-yellow)](LICENSE)
+[![Testes](https://img.shields.io/badge/testes-87%20aprovados-brightgreen)](tests/) [![Cobertura](https://img.shields.io/badge/cobertura-97%25-brightgreen)](vitest.config.js) [![Node.js](https://img.shields.io/badge/node-%3E%3D18-blue)](package.json) [![Licença: MIT](https://img.shields.io/badge/licen%C3%A7a-MIT-yellow)](LICENSE)
 
-An MCP (Model Context Protocol) server that bridges AI assistants to Unreal Engine 5's editor, enabling direct manipulation of levels, actors, Blueprints, and Animation Blueprints.
+Um servidor MCP (Model Context Protocol) que conecta assistentes de IA ao editor do Unreal Engine 5, permitindo manipular diretamente níveis, atores, Blueprints e Animation Blueprints.
 
-## Why a Standalone Repository?
+## Por que um repositório independente?
 
-This MCP server was originally part of the [UnrealClaude](https://github.com/Natfii/UnrealClaude) plugin, but has been moved to its own repository because:
+Este servidor MCP fazia originalmente parte do plugin [Martins Unreal Claude](https://github.com/SilvaneiMartins/MartinsUrealClaude), mas foi transferido para um repositório próprio porque:
 
-1. **Expanded Scope**: The MCP protocol is an open standard now supported by many AI providers
-2. **Easier Forking**: Developers can fork and adapt this bridge for other AI services without pulling the entire Unreal plugin
-3. **Community Contributions**: Standalone repo makes it easier to accept PRs for new features, bug fixes, and support for additional MCP clients
+1. **Escopo ampliado:** o protocolo MCP é um padrão aberto, hoje compatível com vários provedores de IA.
+2. **Forks mais simples:** desenvolvedores podem adaptar a ponte para outros serviços de IA sem precisar obter o plugin inteiro do Unreal.
+3. **Contribuições da comunidade:** um repositório independente facilita receber contribuições de novos recursos, correções de bugs e suporte a outros clientes MCP.
 
-## Compatible AI Clients
+## Clientes de IA compatíveis
 
-This server uses the standard [Model Context Protocol](https://modelcontextprotocol.io/) and works with **any MCP-compatible AI client**, including:
+Este servidor usa o padrão [Model Context Protocol](https://modelcontextprotocol.io/) e funciona com **qualquer cliente compatível com MCP**, incluindo:
 
 - **Claude Code** (CLI)
-- **Claude Desktop App**
-- **OpenAI ChatGPT Desktop** (MCP support added March 2025)
-- **Cursor** (AI-powered IDE)
-- **Replit** (AI coding platform)
+- **Aplicativo Claude Desktop**
+- **OpenAI ChatGPT Desktop** (suporte a MCP adicionado em março de 2025)
+- **Cursor** (ambiente de desenvolvimento com IA)
+- **Replit** (plataforma de programação com IA)
 - **Sourcegraph Cody**
 - **Windsurf**
-- **And any other MCP-compliant tool**
+- **E qualquer outra ferramenta compatível com MCP**
 
-The protocol was [donated to the Linux Foundation](https://en.wikipedia.org/wiki/Model_Context_Protocol) in December 2025 and continues to see broad adoption across the AI industry.
-
----
-
-## Important: What This Tool Is (and Isn't)
-
-**This is NOT a "text-to-game" tool.** It will not generate 3D models, textures, animations, or replace the work of artists, animators, and asset creators.
-
-**This IS a workflow accelerator** for Unreal Engine developers. It helps with:
-
-- **Project setup monotony**: Quickly scaffold Blueprints, set up state machines, configure input bindings
-- **Repetitive editor tasks**: Spawn actors, set properties, organize levels using natural language
-- **Rapid prototyping**: Test ideas faster by describing what you want instead of clicking through menus
-- **Learning UE5**: Query the built-in API documentation while working
-
-The goal is to speed up the tedious parts of game development so you can focus on the creative work that actually matters.
+O protocolo foi [doado à Linux Foundation](https://en.wikipedia.org/wiki/Model_Context_Protocol) em dezembro de 2025 e continua sendo amplamente adotado pela indústria de IA.
 
 ---
 
-## Requirements
+## Importante: o que esta ferramenta é — e o que não é
 
-- **Node.js** 18.0.0 or higher
-- An HTTP endpoint that implements the expected REST API (default: `http://localhost:3000`)
+**Esta NÃO é uma ferramenta de “texto para jogo”.** Ela não gera modelos 3D, texturas ou animações, nem substitui o trabalho de artistas, animadores e criadores de assets.
 
-> **Note**: This MCP server is designed to work with the [UnrealClaude plugin](https://github.com/Natfii/UnrealClaude), but can be adapted for other HTTP backends that implement the same API.
+**Esta ferramenta acelera o fluxo de trabalho** de quem desenvolve com Unreal Engine. Ela ajuda a:
 
-## Quick Start
+- **Reduzir tarefas repetitivas de configuração:** criar a estrutura inicial de Blueprints, configurar máquinas de estado e vinculações de entrada.
+- **Automatizar tarefas repetitivas no editor:** gerar atores, definir propriedades e organizar níveis usando linguagem natural.
+- **Prototipar rapidamente:** testar ideias descrevendo o que você quer, em vez de navegar pelos menus.
+- **Aprender UE5:** consultar a documentação integrada da API durante o trabalho.
 
-### 1. Install
+O objetivo é acelerar as partes mais tediosas do desenvolvimento de jogos para que você possa se concentrar no trabalho criativo que realmente importa.
+
+---
+
+## Requisitos
+
+- **Node.js** 18.0.0 ou superior
+- Um endpoint HTTP que implemente a API REST esperada (padrão: `http://localhost:3000`)
+
+> **Observação:** este servidor MCP foi desenvolvido para funcionar com o [plugin Martins Unreal Claude](https://github.com/SilvaneiMartins/MartinsUrealClaude), mas pode ser adaptado para outros back-ends HTTP que implementem a mesma API.
+
+## Início rápido
+
+### 1. Instalação
 
 ```bash
-git clone https://github.com/Natfii/unrealclaude-mcp-bridge.git
-cd unrealclaude-mcp-bridge
+git clone https://github.com/SilvaneiMartins/ue5-mcp-bridge-martins.git
+cd ue5-mcp-bridge-martins
 npm install
 ```
 
-### 2. Configure Your MCP Client
+### 2. Configure seu cliente MCP
 
-Add to your MCP client's configuration:
+Adicione a configuração a seguir à configuração do seu cliente MCP:
 
 **Claude Code** (`~/.claude/settings.json`):
 ```json
@@ -71,7 +71,7 @@ Add to your MCP client's configuration:
   "mcpServers": {
     "unreal": {
       "command": "node",
-      "args": ["/path/to/unrealclaude-mcp-bridge/index.js"],
+      "args": ["/path/to/ue5-mcp-bridge-martins/index.js"],
       "env": {
         "UNREAL_MCP_URL": "http://localhost:3000"
       }
@@ -86,7 +86,7 @@ Add to your MCP client's configuration:
   "mcpServers": {
     "unreal": {
       "command": "node",
-      "args": ["/path/to/unrealclaude-mcp-bridge/index.js"],
+      "args": ["/path/to/ue5-mcp-bridge-martins/index.js"],
       "env": {
         "UNREAL_MCP_URL": "http://localhost:3000"
       }
@@ -95,203 +95,203 @@ Add to your MCP client's configuration:
 }
 ```
 
-**Other MCP Clients**: Consult your client's documentation for MCP server configuration. The server uses stdio transport.
+**Outros clientes MCP:** consulte a documentação do seu cliente para configurar um servidor MCP. Este servidor usa transporte stdio.
 
-### 3. Use It
+### 3. Use o servidor
 
-Once connected, you can interact with Unreal Editor through natural language:
+Depois de conectar, você pode interagir com o Unreal Editor usando linguagem natural:
 
-```
-"Spawn a point light at position 0, 0, 500"
-"List all StaticMeshActors in the level"
-"Create a new Actor Blueprint called BP_Enemy"
-"Add a float variable called Health to BP_Player"
-"Create a state machine called Locomotion in my Animation Blueprint"
+```text
+"Crie um Point Light na posição 0, 0, 500"
+"Liste todos os StaticMeshActors do nível"
+"Crie um novo Actor Blueprint chamado BP_Enemy"
+"Adicione uma variável float chamada Health ao BP_Player"
+"Crie uma máquina de estado chamada Locomotion no meu Animation Blueprint"
 ```
 
 ---
 
-## Available Tools
+## Ferramentas disponíveis
 
-### Connection & Context
+### Conexão e contexto
 
-| Tool | Description |
-|------|-------------|
-| `unreal_status` | Check connection to Unreal Editor |
-| `unreal_get_ue_context` | Get UE 5.7 API documentation by category or query |
+| Ferramenta | Descrição |
+|------------|-----------|
+| `unreal_status` | Verifica a conexão com o Unreal Editor |
+| `unreal_get_ue_context` | Obtém a documentação da API do UE 5.7 por categoria ou consulta |
 
-### Level & Actor Tools
+### Níveis e atores
 
-| Tool | Description |
-|------|-------------|
-| `unreal_open_level` | Open, create, or list level maps in the editor |
-| `unreal_spawn_actor` | Spawn actors in the level |
-| `unreal_get_level_actors` | List actors in the current level |
-| `unreal_set_property` | Set properties on actors |
-| `unreal_move_actor` | Move/rotate/scale actors |
-| `unreal_delete_actors` | Delete actors from the level |
-| `unreal_run_console_command` | Run Unreal console commands |
-| `unreal_get_output_log` | Get recent output log entries |
+| Ferramenta | Descrição |
+|------------|-----------|
+| `unreal_open_level` | Abre, cria ou lista mapas de nível no editor |
+| `unreal_spawn_actor` | Gera atores no nível |
+| `unreal_get_level_actors` | Lista os atores do nível atual |
+| `unreal_set_property` | Define propriedades de atores |
+| `unreal_move_actor` | Move, gira ou redimensiona atores |
+| `unreal_delete_actors` | Exclui atores do nível |
+| `unreal_run_console_command` | Executa comandos do console do Unreal |
+| `unreal_get_output_log` | Obtém as entradas recentes do Output Log |
 
-### Asset Tools
+### Assets
 
-| Tool | Description |
-|------|-------------|
-| `unreal_asset_search` | Search for assets by class, path, or name |
-| `unreal_asset_dependencies` | Get all assets that a specific asset depends on |
-| `unreal_asset_referencers` | Get all assets that reference a specific asset |
+| Ferramenta | Descrição |
+|------------|-----------|
+| `unreal_asset_search` | Pesquisa assets por classe, caminho ou nome |
+| `unreal_asset_dependencies` | Obtém todos os assets dos quais um asset depende |
+| `unreal_asset_referencers` | Obtém todos os assets que fazem referência a um asset |
 
-### Script Execution
+### Execução de scripts
 
-| Tool | Description |
-|------|-------------|
-| `unreal_execute_script` | Execute C++, Python, or console scripts |
-| `unreal_cleanup_scripts` | Remove generated scripts |
-| `unreal_get_script_history` | Get script execution history |
+| Ferramenta | Descrição |
+|------------|-----------|
+| `unreal_execute_script` | Executa scripts C++, Python ou de console |
+| `unreal_cleanup_scripts` | Remove scripts gerados |
+| `unreal_get_script_history` | Obtém o histórico de execução dos scripts |
 
 ### Viewport
 
-| Tool | Description |
-|------|-------------|
-| `unreal_capture_viewport` | Capture screenshot of active viewport |
+| Ferramenta | Descrição |
+|------------|-----------|
+| `unreal_capture_viewport` | Captura uma imagem da viewport ativa |
 
-### Blueprint Tools
+### Blueprints
 
-| Tool | Description |
-|------|-------------|
-| `unreal_blueprint_query` | Query Blueprint information (list, inspect, get_graph) |
-| `unreal_blueprint_modify` | Modify Blueprints (create, add variables/functions, add nodes, connect pins) |
+| Ferramenta | Descrição |
+|------------|-----------|
+| `unreal_blueprint_query` | Consulta informações de Blueprints (`list`, `inspect`, `get_graph`) |
+| `unreal_blueprint_modify` | Modifica Blueprints: cria, adiciona variáveis e funções, nós e conecta pinos |
 
-### Animation Blueprint Tools
+### Animation Blueprints
 
-| Tool | Description |
-|------|-------------|
-| `unreal_anim_blueprint_modify` | Full Animation Blueprint manipulation |
+| Ferramenta | Descrição |
+|------------|-----------|
+| `unreal_anim_blueprint_modify` | Oferece controle completo sobre Animation Blueprints |
 
-### Character Tools
+### Personagens
 
-| Tool | Description |
-|------|-------------|
-| `unreal_character` | Query and modify ACharacter actors in the current level |
-| `unreal_character_data` | Create and manage character configuration DataAssets and stats DataTables |
+| Ferramenta | Descrição |
+|------------|-----------|
+| `unreal_character` | Consulta e modifica atores `ACharacter` do nível atual |
+| `unreal_character_data` | Cria e gerencia DataAssets de configuração de personagens e DataTables de atributos |
 
-### Material Tools
+### Materiais
 
-| Tool | Description |
-|------|-------------|
-| `unreal_material` | Material instance creation and assignment for Skeletal Meshes |
+| Ferramenta | Descrição |
+|------------|-----------|
+| `unreal_material` | Cria e atribui instâncias de materiais a Skeletal Meshes |
 
-### Enhanced Input Tools
+### Enhanced Input
 
-| Tool | Description |
-|------|-------------|
-| `unreal_enhanced_input` | Create and modify Enhanced Input assets (InputAction, InputMappingContext) |
+| Ferramenta | Descrição |
+|------------|-----------|
+| `unreal_enhanced_input` | Cria e modifica assets do Enhanced Input (`InputAction`, `InputMappingContext`) |
 
-### Async Task Queue
+### Fila de tarefas assíncronas
 
-| Tool | Description |
-|------|-------------|
-| `unreal_task_submit` | Submit an MCP tool for async background execution |
-| `unreal_task_status` | Check status of a submitted async task |
-| `unreal_task_result` | Get the result of a completed async task |
-| `unreal_task_list` | List all async tasks |
-| `unreal_task_cancel` | Cancel a running async task |
-
----
-
-## Animation Blueprint Operations
-
-The `unreal_anim_blueprint_modify` tool provides comprehensive control over Animation Blueprints:
-
-### State Machine Operations
-
-| Operation | Description |
-|-----------|-------------|
-| `get_info` | Get AnimBlueprint structure overview |
-| `get_state_machine` | Get detailed state machine info |
-| `create_state_machine` | Create new state machine |
-| `add_state` | Add state to state machine |
-| `remove_state` | Remove state from state machine |
-| `set_entry_state` | Set entry state for state machine |
-| `connect_state_machine_to_output` | Connect state machine to AnimGraph output pose |
-
-### Transition Operations
-
-| Operation | Description |
-|-----------|-------------|
-| `add_transition` | Create transition between states |
-| `remove_transition` | Remove transition |
-| `set_transition_duration` | Set blend duration |
-| `set_transition_priority` | Set evaluation priority |
-
-### Transition Condition Graph
-
-| Operation | Description |
-|-----------|-------------|
-| `add_condition_node` | Add logic node (TimeRemaining, Greater, Less, And, Or, Not, GetVariable) |
-| `delete_condition_node` | Remove node from transition graph |
-| `connect_condition_nodes` | Connect nodes in transition graph |
-| `connect_to_result` | Connect condition to transition result |
-
-### Node/Pin Introspection
-
-| Operation | Description |
-|-----------|-------------|
-| `get_transition_nodes` | List all nodes in transition graph(s) with their pins |
-| `inspect_node_pins` | Get detailed pin info (types, connections, default values) |
-| `set_pin_default_value` | Set pin default value with type validation |
-| `add_comparison_chain` | Add GetVariable -> Comparison -> Result chain |
-| `validate_blueprint` | Return compile status and diagnostics |
-
-### Animation Assignment
-
-| Operation | Description |
-|-----------|-------------|
-| `set_state_animation` | Assign AnimSequence, BlendSpace, BlendSpace1D, or Montage |
-| `find_animations` | Search compatible animation assets |
-
-### Batch Operations
-
-| Operation | Description |
-|-----------|-------------|
-| `batch` | Execute multiple operations atomically |
+| Ferramenta | Descrição |
+|------------|-----------|
+| `unreal_task_submit` | Envia uma ferramenta MCP para execução assíncrona em segundo plano |
+| `unreal_task_status` | Verifica o estado de uma tarefa assíncrona enviada |
+| `unreal_task_result` | Obtém o resultado de uma tarefa concluída |
+| `unreal_task_list` | Lista todas as tarefas assíncronas |
+| `unreal_task_cancel` | Cancela uma tarefa em execução |
 
 ---
 
-## UE 5.7 Context System
+## Operações com Animation Blueprints
 
-The server includes built-in UE 5.7 API documentation that can be queried:
+A ferramenta `unreal_anim_blueprint_modify` oferece controle abrangente sobre Animation Blueprints:
 
-### Available Categories
+### Operações com máquinas de estado
 
-| Category | Description |
-|----------|-------------|
-| `animation` | Animation Blueprint, state machines, transitions, UAnimInstance |
-| `blueprint` | Blueprint graphs, UK2Node, FBlueprintEditorUtils |
-| `slate` | Slate UI widgets, SNew/SAssignNew, layout patterns |
-| `actor` | Actor spawning, components, transforms, iteration |
-| `assets` | Asset loading, TSoftObjectPtr, FStreamableManager, async loading |
-| `replication` | Network replication, RPCs, DOREPLIFETIME, OnRep |
-| `enhanced_input` | Enhanced Input System, Input Actions, Mapping Contexts |
-| `character` | Character movement, configuration, stats |
-| `material` | Material instances, parameters, slots |
+| Operação | Descrição |
+|----------|-----------|
+| `get_info` | Obtém uma visão geral da estrutura do AnimBlueprint |
+| `get_state_machine` | Obtém informações detalhadas da máquina de estado |
+| `create_state_machine` | Cria uma máquina de estado |
+| `add_state` | Adiciona um estado à máquina de estado |
+| `remove_state` | Remove um estado |
+| `set_entry_state` | Define o estado inicial da máquina de estado |
+| `connect_state_machine_to_output` | Conecta a máquina de estado à saída de pose do AnimGraph |
 
-### Usage
+### Operações com transições
+
+| Operação | Descrição |
+|----------|-----------|
+| `add_transition` | Cria uma transição entre estados |
+| `remove_transition` | Remove uma transição |
+| `set_transition_duration` | Define a duração da mesclagem |
+| `set_transition_priority` | Define a prioridade de avaliação |
+
+### Grafo de condições de transição
+
+| Operação | Descrição |
+|----------|-----------|
+| `add_condition_node` | Adiciona um nó lógico (`TimeRemaining`, `Greater`, `Less`, `And`, `Or`, `Not`, `GetVariable`) |
+| `delete_condition_node` | Remove um nó do grafo de transição |
+| `connect_condition_nodes` | Conecta nós no grafo de condições |
+| `connect_to_result` | Conecta uma condição ao resultado da transição |
+
+### Inspeção de nós e pinos
+
+| Operação | Descrição |
+|----------|-----------|
+| `get_transition_nodes` | Lista os nós de todos os grafos de transição e seus pinos |
+| `inspect_node_pins` | Obtém detalhes dos pinos: tipos, conexões e valores padrão |
+| `set_pin_default_value` | Define o valor padrão de um pino com validação de tipo |
+| `add_comparison_chain` | Adiciona uma cadeia `GetVariable -> Comparison -> Result` |
+| `validate_blueprint` | Retorna o estado da compilação e os diagnósticos |
+
+### Atribuição de animações
+
+| Operação | Descrição |
+|----------|-----------|
+| `set_state_animation` | Atribui um `AnimSequence`, `BlendSpace`, `BlendSpace1D` ou `Montage` |
+| `find_animations` | Pesquisa assets de animação compatíveis |
+
+### Operações em lote
+
+| Operação | Descrição |
+|----------|-----------|
+| `batch` | Executa várias operações atomicamente |
+
+---
+
+## Sistema de contexto do UE 5.7
+
+O servidor inclui documentação integrada da API do UE 5.7 que pode ser consultada:
+
+### Categorias disponíveis
+
+| Categoria | Descrição |
+|-----------|-----------|
+| `animation` | Animation Blueprint, máquinas de estado, transições e `UAnimInstance` |
+| `blueprint` | Grafos de Blueprint, `UK2Node` e `FBlueprintEditorUtils` |
+| `slate` | Widgets Slate, `SNew`/`SAssignNew` e padrões de layout |
+| `actor` | Geração de atores, componentes, transformações e iteração |
+| `assets` | Carregamento de assets, `TSoftObjectPtr`, `FStreamableManager` e carregamento assíncrono |
+| `replication` | Replicação de rede, RPCs, `DOREPLIFETIME` e `OnRep` |
+| `enhanced_input` | Sistema Enhanced Input, ações de entrada e contextos de mapeamento |
+| `character` | Movimento, configuração e atributos de personagens |
+| `material` | Instâncias de materiais, parâmetros e slots |
+
+### Uso
 
 ```json
-// Get specific category
+// Obter uma categoria específica
 { "category": "animation" }
 
-// Search by keywords
+// Pesquisar por palavras-chave
 { "query": "state machine transitions" }
 
-// List all categories
+// Listar todas as categorias
 {}
 ```
 
-### Automatic Context Injection
+### Injeção automática de contexto
 
-Enable automatic context injection by setting:
+Ative a injeção automática de contexto definindo:
 
 ```json
 {
@@ -303,72 +303,72 @@ Enable automatic context injection by setting:
 
 ---
 
-## Configuration
+## Configuração
 
-| Environment Variable | Default | Description |
-|---------------------|---------|-------------|
-| `UNREAL_MCP_URL` | `http://localhost:3000` | Unreal plugin HTTP server URL |
-| `MCP_REQUEST_TIMEOUT_MS` | `30000` | Request timeout in milliseconds |
-| `INJECT_CONTEXT` | `false` | Auto-inject UE5 context on tool responses |
-| `DEBUG` | - | Enable debug logging |
+| Variável de ambiente | Padrão | Descrição |
+|----------------------|--------|-----------|
+| `UNREAL_MCP_URL` | `http://localhost:3000` | URL do servidor HTTP do plugin do Unreal |
+| `MCP_REQUEST_TIMEOUT_MS` | `30000` | Tempo limite da solicitação, em milissegundos |
+| `INJECT_CONTEXT` | `false` | Injeta automaticamente o contexto do UE5 nas respostas das ferramentas |
+| `DEBUG` | - | Habilita o registro de depuração |
 
 ---
 
-## Troubleshooting
+## Solução de problemas
 
-### Tools show "NOT CONNECTED"
+### As ferramentas exibem “NOT CONNECTED”
 
-- Ensure your HTTP backend is running and accessible
-- Verify the `UNREAL_MCP_URL` environment variable points to the correct endpoint
-- Check that the endpoint responds to `/mcp/status`
+- Verifique se o back-end HTTP está em execução e acessível.
+- Confirme se a variável de ambiente `UNREAL_MCP_URL` aponta para o endpoint correto.
+- Confira se o endpoint responde em `/mcp/status`.
 
-### stdin/stdout errors
+### Erros de stdin/stdout
 
-- Ensure Node.js 18+ is installed and in PATH
-- Run `npm install` to ensure dependencies are present
-- Verify the path in your MCP client config points to the correct `index.js`
+- Verifique se o Node.js 18 ou superior está instalado e disponível no `PATH`.
+- Execute `npm install` para instalar as dependências.
+- Confirme se o caminho na configuração do cliente MCP aponta para o `index.js` correto.
 
-### Running the Test Suite
+### Executar a suíte de testes
 
-This repo includes a Vitest test suite (87 tests) that validates bridge behavior without a running Unreal Editor:
+Este repositório inclui uma suíte de testes Vitest (87 testes) que valida o comportamento da ponte sem precisar de uma instância do Unreal Editor em execução:
 
 ```bash
 npm install
-npm test              # run all tests
-npm run test:watch    # watch mode
-npm run test:coverage # with coverage report
+npm test              # executa todos os testes
+npm run test:watch    # executa em modo de observação
+npm run test:coverage # executa com relatório de cobertura
 ```
 
-Tests mock the Unreal HTTP server and cover schema conversion, HTTP client logic, context loading, tool listing, and call routing.
+Os testes simulam o servidor HTTP do Unreal e cobrem a conversão de esquemas, a lógica do cliente HTTP, o carregamento de contexto, a listagem de ferramentas e o roteamento de chamadas.
 
 ---
 
-## Contributing
+## Contribuição
 
-Contributions are welcome! Feel free to:
+Contribuições são bem-vindas! Você pode:
 
-- Add support for additional MCP client configurations
-- Improve the UE5 context documentation
-- Fix bugs or add new features
-- Submit documentation improvements
-
----
-
-## License
-
-MIT with Attribution - see [LICENSE](LICENSE) for details.
-
-**Attribution Required**: If you use this project, please credit:
-- Project: UE5 MCP Server
-- Author: Natali Caggiano (Natfii)
-- Link: https://github.com/Natfii/unrealclaude-mcp-bridge
-
-**Disclosure Required**: If you build another MCP server or AI integration using this code, please disclose its use in your documentation.
+- Adicionar suporte a configurações de outros clientes MCP.
+- Melhorar a documentação de contexto do UE5.
+- Corrigir bugs ou adicionar recursos.
+- Enviar melhorias para a documentação.
 
 ---
 
-## Related
+## Licença
 
-- [UnrealClaude Plugin](https://github.com/Natfii/UnrealClaude) - Unreal Engine plugin that provides the HTTP backend for this MCP server
-- [Model Context Protocol](https://modelcontextprotocol.io/) - The protocol specification
-- [MCP GitHub](https://github.com/modelcontextprotocol) - Official MCP repositories and SDKs
+MIT com requisito de atribuição — consulte [LICENSE](LICENSE) para obter os detalhes.
+
+**Créditos originais exigidos pela licença:** este projeto deriva do UE5 MCP Server original. A licença exige que os seguintes créditos sejam mantidos:
+
+- Projeto original: UE5 MCP Server
+- Repositório original: https://github.com/SilvaneiMartins/ue5-mcp-bridge-martins
+
+**Divulgação exigida:** se você usar este código em outro servidor MCP ou integração de IA, informe esse uso na documentação do seu projeto.
+
+---
+
+## Links relacionados
+
+- [Plugin Martins Unreal Claude](https://github.com/SilvaneiMartins/MartinsUrealClaude) — plugin do Unreal Engine que fornece o back-end HTTP para este servidor MCP.
+- [Model Context Protocol](https://modelcontextprotocol.io/) — especificação do protocolo.
+- [GitHub do MCP](https://github.com/modelcontextprotocol) — repositórios e SDKs oficiais.

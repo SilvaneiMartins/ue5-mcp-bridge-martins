@@ -22,7 +22,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Natfii/unrealclaude-mcp-bridge.git"
+    "url": "https://github.com/SilvaneiMartins/ue5-mcp-bridge-martins.git"
   },
   "license": "MIT",
   "dependencies": {
